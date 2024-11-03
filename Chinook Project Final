@@ -1,0 +1,36 @@
+SELECT FirstName,LastName, Country
+FROM chinook.customers
+WHERE Country='Brazil';
+
+SELECT FirstName, LastName, Title
+FROM chinook.employees
+WHERE Title='Sales Support Agent';
+
+SELECT COUNT(*)
+FROM chinook.Invoices
+WHERE InvoiceDate BETWEEN '2009-01-01' AND '2009-12-31';
+
+SELECT emp.LastName, emp.Firstname, cust.FirstName, cust.LastName, cust.Country, inv.total
+FROM chinook.employees emp 
+JOIN chinook.Customers cust ON cust.SupportRepId = emp.EmployeeId
+JOIN chinook.Invoices Inv ON Inv.CustomerId = cust.CustomerId;
+
+SELECT SUM(Total)
+FROM chinook.Invoices
+WHERE InvoiceDate BETWEEN '2009-01-01' AND '2009-12-31';
+
+SELECT FirstName, LastName, CustomerId, Country
+FROM chinook.customers
+WHERE NOT Country= 'USA';
+
+SELECT t.Name, a.Title, m.Name, g.Name
+FROM chinook.Tracks t
+JOIN chinook.Albums a
+ON a.AlbumId=t.AlbumId
+JOIN chinook.Media_types m
+ON m.MediaTypeId=t.MediaTypeId
+JOIN chinook.genres g 
+ON g.GenreId=t.GenreId;
+
+SELECT distinct BillingCountry
+FROM chinook.invoices
